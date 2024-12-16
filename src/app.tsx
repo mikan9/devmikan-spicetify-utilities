@@ -3,8 +3,8 @@ import PresenceView from "./components/presence-view/presence-view.component";
 import styles from "./css/app.module.scss";
 import { IPresenceView } from "./models/metadata";
 import {
-	fetchAndStorePresenceViews,
-	PresenceViewHandler,
+    fetchAndStorePresenceViews,
+    PresenceViewHandler,
 } from "./utils/presence-view";
 
 class App extends React.Component<
@@ -18,14 +18,19 @@ class App extends React.Component<
 
 	viewHandler: PresenceViewHandler = new PresenceViewHandler();
 
-	stopConfettiTimeout: NodeJS.Timeout | null = null;
-
 	componentDidMount(): void {
 		this.setState((state) => {
 			return {
 				views: this.viewHandler.currentViews,
 			};
 		});
+        (function(){
+            const fn = function() {
+                fetchAndStorePresenceViews();
+            }
+            window.setInterval(fn, 20000);
+            fn();
+        })();
 	}
 
 	onButtonClick = () => {
