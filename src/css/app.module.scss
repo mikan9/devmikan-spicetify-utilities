@@ -51,3 +51,8 @@
 .GenericModal:has(img.user-image) {
 	width: 300px !important;
 }
+
+.buttonBar {
+	display: flex;
+	align-items: center;
+}

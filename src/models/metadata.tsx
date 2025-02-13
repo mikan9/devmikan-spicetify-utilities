@@ -22,6 +22,17 @@ export interface Track extends MetaData {
 	context: Context;
 }
 
+export interface Profile extends User {
+	followersCount: number;
+	isFollowing: boolean;
+	color?: number;
+	updatedAt?: string;
+}
+
+export interface Following {
+	profiles: Profile[];
+}
+
 export interface IPresenceView {
 	timestamp: number;
 	user: User;
